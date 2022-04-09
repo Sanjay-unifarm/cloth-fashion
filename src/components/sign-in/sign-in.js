@@ -45,9 +45,13 @@ export const SignIn = ()=>{
                     handleChange={handleChange}
                     label='password'
                 />
-                <CustomButton btnLabelText="Submit" />
+                <div className="btn-container">
+                    
+                <CustomButton className="custom-button"btnLabelText="Submit" />
+                <CustomButton className="googleSignin" btnLabelText="Sign In With Google" />
+                </div>
                 {/* <button type="submit">Submit Form</button> */}
-            </form>
+            </form> 
 
             </div>
         </>
