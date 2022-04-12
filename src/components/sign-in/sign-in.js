@@ -1,7 +1,10 @@
 import React,{useState} from "react";
 import {FormInput} from "../formInput/formInput"
 import {CustomButton} from "../custom-button/customButton"
+import {auth} from "../../firebase/firebase.utils.js"
+import {  signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import './sign-in.scss'
+
 
 
 export const SignIn = ()=>{
@@ -20,6 +23,19 @@ export const SignIn = ()=>{
         console.log(signInDetails)
 
     }
+
+    const signInWithGoogle =(e)=>{
+        e.preventDefault();
+        console.log("called")
+        const provider = new GoogleAuthProvider();
+        signInWithPopup(auth,provider).then((res)=>{
+            console.log(res)
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
+
+
     return(
         <>
             <div className="sign-in">
@@ -27,12 +43,10 @@ export const SignIn = ()=>{
                 <span>Sign  in with email and password</span>
 
 
-            <form onSubmit={handleSubmit}>
-
+            <form onSubmit={handleSubmit} >
                 <FormInput
                     name="email"
                     type="email"
-                    // placeholder="enter email"
                     value={signInDetails.email}
                     handleChange={handleChange}
                     label='email'
@@ -40,17 +54,14 @@ export const SignIn = ()=>{
                 <FormInput
                     name="password"
                     type="password"
-                    // placeholder="enter email"
                     value={signInDetails.password}
                     handleChange={handleChange}
                     label='password'
                 />
                 <div className="btn-container">
-                    
                 <CustomButton className="custom-button"btnLabelText="Submit" />
-                <CustomButton className="googleSignin" btnLabelText="Sign In With Google" />
+                <CustomButton onClick={signInWithGoogle} className="googleSignin" btnLabelText="Sign In With Google" />
                 </div>
-                {/* <button type="submit">Submit Form</button> */}
             </form> 
 
             </div>

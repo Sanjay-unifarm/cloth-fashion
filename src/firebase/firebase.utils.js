@@ -1,9 +1,8 @@
-import firebase from 'firebase/app';
-import' firebase/firestore';
-import 'firebase/auth'
+import {initializeApp} from 'firebase/app';
+import {getAuth} from "firebase/auth";
 
 
-export const firbaseConfig = {
+const firebaseConfig = {
     apiKey: "AIzaSyAwP-KvmVLAhiFhuXwOcd4P4H02mWk5qKo",
     authDomain: "cloth-fashion-db.firebaseapp.com",
     projectId: "cloth-fashion-db",
@@ -12,3 +11,6 @@ export const firbaseConfig = {
     appId: "1:123881470704:web:88efc9865ded37da6f2035",
     measurementId: "G-PX0RT1K0WB"
 }
+
+const app = initializeApp(firebaseConfig)
+export const auth= getAuth(app)
