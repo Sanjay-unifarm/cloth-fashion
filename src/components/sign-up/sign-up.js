@@ -2,6 +2,9 @@ import React,{useState} from "react";
 import {FormInput} from "../formInput/formInput"
 import { CustomButton } from "../custom-button/customButton";
 import '../sign-in/sign-in.scss'
+import {auth} from "../../firebase/firebase.utils"
+import { saveUserDetails } from "../../firebase/firebase.utils";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 export const SignUp = ()=>{
 
     const [signUpDetails,setSignUpDetails]=useState({
@@ -17,7 +20,40 @@ export const SignUp = ()=>{
     }
     const handleSubmit=(e)=>{
         e.preventDefault();
-        console.log(signUpDetails)
+        
+        if(signUpDetails.password !== signUpDetails.confirmPassword){
+               alert("password does not match");
+               return; 
+        }
+
+        try{
+           const {email,password,displayName} = signUpDetails
+            const {user} =createUserWithEmailAndPassword(auth,email,password)
+            saveUserDetails(user,{displayName:displayName}).then((res)=>{
+                console.log("res",res)
+            }).catch((err)=>{
+                console.log("err",err)
+            })
+            signUpDetails({
+                displayName:"",
+                email:"",
+                password:"",
+                confirmPassword:"",
+
+            })
+        }
+        catch(error){
+            
+            console.log(error)
+
+        }
+
+
+        // saveUserDetails(signUpDetails).then((res)=>{
+        //     console.log(res)
+        // }).catch((err)=>{
+        //     console.log(err )
+        // })
     }
     return(
         <>

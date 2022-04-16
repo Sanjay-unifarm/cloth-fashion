@@ -5,7 +5,6 @@ import {HatsPage} from "./pages/hatsPage/hatsPage"
 import { Header } from "./components/header/header";
 import {Auth} from "./pages/sign-in-and-signup/sign-in-and-singup";
 import {auth} from "./firebase/firebase.utils"
-
 import './App.css';
 
 function App() {

@@ -1,8 +1,9 @@
-import React,{useState} from "react";
+import React,{useState,useEffect} from "react";
 import {FormInput} from "../formInput/formInput"
 import {CustomButton} from "../custom-button/customButton"
 import {auth} from "../../firebase/firebase.utils.js"
 import {  signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import {saveUserDetails} from "../../firebase/firebase.utils"
 import './sign-in.scss'
 
 
@@ -12,6 +13,11 @@ export const SignIn = ()=>{
         email:"",
         password:"",
     });
+
+    const [userDetails,setUserDetails]=useState({
+        displayName:"",
+        email:"",
+    })
 
     const handleChange =(e)=>{
         const {value,name}=e.target;
@@ -26,15 +32,28 @@ export const SignIn = ()=>{
 
     const signInWithGoogle =(e)=>{
         e.preventDefault();
-        console.log("called")
         const provider = new GoogleAuthProvider();
         signInWithPopup(auth,provider).then((res)=>{
-            console.log(res)
+            console.log("user Data",res.user.displayName)
+            setUserDetails({displayName:res.user.displayName,email:res.user.email})
+           
+           
+            saveUserDetails({displayName:res.user.displayName, email:res.user.email}).then((res)=>{
+                console.log(res,"response from userDetails")    
+                return res
+            }).catch((err)=>{
+                console.log(err,"error")    
+                return err
+            })
+            
         }).catch((err)=>{
             console.log(err)
         })
     }
 
+    // useEffect(()=>{
+    //     console.log(userDetails)
+    // },[userDetails])
 
     return(
         <>
