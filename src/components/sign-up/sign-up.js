@@ -18,7 +18,7 @@ export const SignUp = ()=>{
         setSignUpDetails({...signUpDetails,[name]:value})
 
     }
-    const handleSubmit=(e)=>{
+    const handleSubmit= async (e)=>{
         e.preventDefault();
         
         if(signUpDetails.password !== signUpDetails.confirmPassword){
@@ -27,25 +27,35 @@ export const SignUp = ()=>{
         }
 
         try{
-           const {email,password,displayName} = signUpDetails
-            const {user} =createUserWithEmailAndPassword(auth,email,password)
-            saveUserDetails(user,{displayName:displayName}).then((res)=>{
-                console.log("res",res)
-            }).catch((err)=>{
-                console.log("err",err)
-            })
-            signUpDetails({
-                displayName:"",
-                email:"",
-                password:"",
-                confirmPassword:"",
 
-            })
+        const {email,password,displayName} = signUpDetails
+
+        const{user}= await createUserWithEmailAndPassword(auth,email,password)
+        console.log(user.metadata.creationTime);
+        saveUserDetails({displayName:displayName,email:user.email,creationTime:user.metadata.creationTime}).then((res)=>{
+            console.log("response from signup",res)
+        }).catch((err)=>{
+            console.log("err form signup ",err)
+        })
+       
+        // .then((userCredent)ials)=>{
+            
+           
+        //     console.log(userCredentials,displayName)
+        // }).catch((error)=>{
+        //     console.log(error)
+        // })
+           
+           
+            // saveUserDetails(user,{displayName}).then((res)=>{
+            //     console.log("res",res)
+            // }).catch((err)=>{
+            //     console.log("err",err)
+            // })
+       
         }
         catch(error){
-            
             console.log(error)
-
         }
 
 

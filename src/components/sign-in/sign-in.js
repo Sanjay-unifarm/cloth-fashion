@@ -2,7 +2,7 @@ import React,{useState,useEffect} from "react";
 import {FormInput} from "../formInput/formInput"
 import {CustomButton} from "../custom-button/customButton"
 import {auth} from "../../firebase/firebase.utils.js"
-import {  signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import {  signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword } from "firebase/auth";
 import {saveUserDetails} from "../../firebase/firebase.utils"
 import './sign-in.scss'
 
@@ -24,9 +24,16 @@ export const SignIn = ()=>{
         setSignInDetails({...signInDetails,[name]:value})
 
     }
-    const handleSubmit =(e)=>{
+    const handleSubmit = async (e)=>{
         e.preventDefault();
-        console.log(signInDetails)
+        const {email,password} = signInDetails;
+
+        await signInWithEmailAndPassword(auth,email,password).
+        then((res)=>{
+            console.log(res)
+        }).catch((err)=>{
+            console.log(err)
+        })
 
     }
 
