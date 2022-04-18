@@ -43,8 +43,7 @@ export const SignIn = ()=>{
         signInWithPopup(auth,provider).then((res)=>{
             console.log("user Data",res.user.displayName)
             setUserDetails({displayName:res.user.displayName,email:res.user.email})
-           
-           
+
             saveUserDetails({displayName:res.user.displayName, email:res.user.email}).then((res)=>{
                 console.log(res,"response from userDetails")    
                 return res
