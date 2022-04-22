@@ -1,7 +1,9 @@
 import {initializeApp} from 'firebase/app';
 import {getAuth} from "firebase/auth";
-import { getFirestore,collection,addDoc } from "firebase/firestore"
-
+import 'firebase/firestore';
+// import { firetore } from "firebase/firestore";
+import {  getFirestore,collection,addDoc,doc } from "firebase/firestore"
+// import fireStore from "firestore"
 
 const firebaseConfig = {
     apiKey: "AIzaSyAwP-KvmVLAhiFhuXwOcd4P4H02mWk5qKo",
@@ -13,11 +15,25 @@ const firebaseConfig = {
     measurementId: "G-PX0RT1K0WB"
 }
 
+
+
+// export const createUserProfileDocument = async(userAuth,additionalData)=>{
+    
+//     console.log(doc(getAuth,'users',"123dasd"))
+  
+// }
+
+
 const app = initializeApp(firebaseConfig)
 export const auth= getAuth(app)
 export const fireStore =getFirestore(app);
 
 const usersRef = collection(fireStore,'users');
+
+
+
+
+
 
 export const saveUserDetails = (user)=>{
     return addDoc(usersRef,user);

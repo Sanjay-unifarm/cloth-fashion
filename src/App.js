@@ -4,22 +4,24 @@ import {HomePage} from "./pages/homePage/homePage"
 import {HatsPage} from "./pages/hatsPage/hatsPage"
 import { Header } from "./components/header/header";
 import {Auth} from "./pages/sign-in-and-signup/sign-in-and-singup";
-import {auth} from "./firebase/firebase.utils"
-import{userAction} from './actions/userAction'
+import {auth,createUserProfileDocument} from "./firebase/firebase.utils";
+import{userAction} from './actions/userAction';
 import { useDispatch } from 'react-redux';
 import './App.css';
 
 function App() {
   const dispatch = useDispatch()
-
   const[currentUser,setCurrentUser] =useState();
   useEffect(()=>{
     auth.onAuthStateChanged((user)=>{
+      // console.log(createUserProfileDocument(user))
       setCurrentUser(dispatch(userAction(user)))
       console.log(user);
     })
       
   },[])
+
+
 
   
 
