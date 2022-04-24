@@ -2,7 +2,6 @@ import './preview-collection.scss'
 import { CollectionItem } from '../../components/collection-item/collectionItem'
 
 export const CollectionPreview =  ({items,title})=>{
-    console.log(items)
     return(
         <div className="collection-preview">
             <h1 className="title">{title.toUpperCase()}</h1>
@@ -11,9 +10,9 @@ export const CollectionPreview =  ({items,title})=>{
 
                     items
                     .filter((item,ind)=>ind<4)
-                    .map(({id,...otherItemProps})=>{
+                    .map((item)=>{
                         return(
-                            <CollectionItem key={id} {...otherItemProps}/>
+                            <CollectionItem key={item.id} item={item} />
                         )
 
                     })
