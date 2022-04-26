@@ -3,6 +3,7 @@ import {Routes,Route} from "react-router-dom"
 import {HomePage} from "./pages/homePage/homePage"
 import {HatsPage} from "./pages/hatsPage/hatsPage"
 import { Header } from "./components/header/header";
+import {Checkout} from './pages/checkout/checkout'
 import {Auth} from "./pages/sign-in-and-signup/sign-in-and-singup";
 import {auth,createUserProfileDocument} from "./firebase/firebase.utils";
 import{userAction} from './actions/userAction';
@@ -32,6 +33,7 @@ function App() {
         <Route path="/" element ={<HomePage/>}/>
         <Route path="/hatsPage" element  ={<HatsPage/>}/>
         <Route path="/signin" element  ={<Auth/>}/>
+        <Route path="/checkout" element  ={<Checkout/>}/>
       </Routes>
       
     </div>
