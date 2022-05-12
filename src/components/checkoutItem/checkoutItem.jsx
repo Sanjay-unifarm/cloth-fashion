@@ -1,5 +1,13 @@
 import './checkoutItem.scss'
-export const CheckoutItem = ({cartItem:{name,price,imageUrl}})=>{
+import {removeCartAction } from '../../actions/addToCartAction'
+import { useDispatch } from 'react-redux'
+export const CheckoutItem = ({cartItem:{name,price,imageUrl,id}})=>{
+   const dispatch = useDispatch();
+  
+   const handleRemove = (id)=>{
+       dispatch(removeCartAction(id))
+   }
+   
     return(
         
         <div className="checkout-item">
@@ -9,7 +17,7 @@ export const CheckoutItem = ({cartItem:{name,price,imageUrl}})=>{
 
             <span className="name">{name}</span>
             <span className="price">{price}</span>
-            <span className="remove-button"> X</span>
+            <span className="remove-button" onClick={()=>handleRemove(id)} > X</span>
 
 
         </div>

@@ -34,7 +34,7 @@ export const Checkout = ()=>{
                 }
 
                 <div className="total">
-                    <span > Total:$0</span>
+                    <span> Total:$0</span>
                 </div>
 
             </div>

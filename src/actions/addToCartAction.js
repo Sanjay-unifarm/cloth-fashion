@@ -7,3 +7,11 @@ export const addToCartAction = (payload)=>{
     }
 
 }
+
+export const removeCartAction = (payload)=>{
+
+    return {
+        type:'REMOVE_CART_ITEM',
+        payload
+    }
+}
