@@ -1,10 +1,22 @@
 import './checkout.scss'
 import {useSelector} from 'react-redux'
 import {CheckoutItem} from '../../components/checkoutItem/checkoutItem'
+import { useEffect,useState } from 'react';
 
 export const Checkout = ()=>{
+    const [price,setPrice] =  useState();
     const getCartItem = useSelector((state)=>state.addToCartReducer.cartItem);
     console.log(getCartItem)
+
+    useEffect(()=>{
+        let sum = 0;
+        getCartItem.map((prices, i)=>{
+            sum += prices.price;
+            
+        })
+       setPrice(sum)
+    },[getCartItem])
+
 
     return (
         <>
@@ -34,7 +46,7 @@ export const Checkout = ()=>{
                 }
 
                 <div className="total">
-                    <span> Total:$0</span>
+                    <span> Total:${price}</span>
                 </div>
 
             </div>
