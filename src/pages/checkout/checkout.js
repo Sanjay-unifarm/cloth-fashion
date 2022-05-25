@@ -2,6 +2,7 @@ import './checkout.scss'
 import {useSelector} from 'react-redux'
 import {CheckoutItem} from '../../components/checkoutItem/checkoutItem'
 import { useEffect,useState } from 'react';
+import { StripCheckoutButton } from '../../components/stripe-button/stripeButton';
 
 export const Checkout = ()=>{
     const [price,setPrice] =  useState();
@@ -49,6 +50,7 @@ export const Checkout = ()=>{
                     <span> Total:${price}</span>
                 </div>
 
+                <StripCheckoutButton price={price}/>
             </div>
 
         </>

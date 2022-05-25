@@ -2,7 +2,10 @@ import './menuItem.scss'
 
 
 export const MenuItem =(props)=>{
-    const{title,imageUrl,size} = props;
+    const{title,imageUrl,size,handleCatRoute} = props;
+    
+  
+
     return (
         <>
             
@@ -12,9 +15,9 @@ export const MenuItem =(props)=>{
 
             
                     
-                    <div className="content">
+                    <div className="content" onClick={handleCatRoute}>
                         <h1 className="title">{title}</h1>
-                        <span className="subtitle">Shop Now</span>  
+                        <span className="subtitle"  >Shop Now</span>  
                     </div>
                  </div>    
         </>

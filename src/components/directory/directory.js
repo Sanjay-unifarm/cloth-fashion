@@ -8,8 +8,14 @@ export const Directory =()=>{
 const navigate = useNavigate();
 const directoryDataList = useSelector((state)=>state.directoryData.sections);
 const handleRouteChage=()=>{
-    navigate("/hatsPage")
-}
+    navigate(`/hatsPage`)
+    }
+
+
+    const handleCatRoute = (id)=>{
+        // console.log({id:id})
+        // navigate(`/hatsPage/${id}`)
+    }
  return (
          
      <>
@@ -23,6 +29,8 @@ const handleRouteChage=()=>{
                             title={title}
                             size={size}
                             imageUrl={imageUrl}
+                            handleCatRoute={()=>handleCatRoute(id)}
+
 
                             />
                     )

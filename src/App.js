@@ -37,7 +37,7 @@ function App() {
         <Route path="/checkout" element  ={<Checkout/>}/>
         <Route path="/hatsPage/:id" element  ={<Category/>}/>
       </Routes>
-      
+        
     </div>
   );
 }
