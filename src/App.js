@@ -35,7 +35,7 @@ function App() {
         <Route path="/hatsPage" element  ={<HatsPage/>}/>
         <Route path="/signin" element  ={<Auth/>}/>
         <Route path="/checkout" element  ={<Checkout/>}/>
-        <Route path="/hatsPage/:id" element  ={<Category/>}/>
+        <Route path="/hatsPage/:catName" element  ={<Category/>}/>
       </Routes>
         
     </div>
