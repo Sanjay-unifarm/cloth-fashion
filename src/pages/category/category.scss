@@ -1,3 +1,6 @@
-.category{
-    // display: flex;
+
+.item{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }

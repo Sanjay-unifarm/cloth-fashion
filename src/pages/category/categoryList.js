@@ -20,7 +20,7 @@ export const Category = ()=>{
     },[])
 
 
-    return(
+    return( 
     <div className="category">
        {
            categoryData.map((title,key)=>{
@@ -28,17 +28,19 @@ export const Category = ()=>{
                const {items} = title
                 return (
                     <div key={key}>
-                        <h1>{title.title}</h1> 
+                        <h1 style={{textAlign: 'center'}}>{title.title}</h1> 
+                    <div className="item">
                         {
                             items.map((ele)=>{ 
                                 return (
 
-                                    <CollectionItem key={ele.id} item={ele} />
+                                    <CollectionItem key={ele.id}    item={ele} />
                                 ) 
                                 
                             })
                         }
                     </div>  
+                    </div>
                 )
 
                 
