@@ -17,7 +17,7 @@ export const HatsPage =()=>{
     return(
         <>
             <div className="shop-page">
-                <button  onClick={redirctToHatsPage} >Redirect</button>
+                {/* <button  onClick={redirctToHatsPage} >Redirect</button> */}
             {/* <Routes>
 
                 <Route exact path={`${match.pathname}`} element={<CollectionOverview/>} />

@@ -12,6 +12,8 @@ export const CartItem = (props)=>{
                     <span className="price" >{quantity}x${price}</span>
                 </div>
             </div>
+
+            
         </>
     )
 }

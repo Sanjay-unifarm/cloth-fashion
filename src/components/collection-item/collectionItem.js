@@ -7,16 +7,10 @@ export const CollectionItem = ({item})=>{
   
     const {name,price,imageUrl} = item
     const dispatch = useDispatch();
+    
     const handdleAddtoCart = (e)=>{
         e.preventDefault();
-
         dispatch(addToCartAction(item))
-
-            // itemCart.map((items,ind)=>{
-            //     return items.id===item.id ?  console.log("matched") :  console.log("not macted")
-       
-            // });
-        
     }
 
     return(

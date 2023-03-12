@@ -9,6 +9,7 @@ import {auth} from '../../firebase/firebase.utils'
 import './header.scss'
 export const Header = (props)=>{
     
+    
 
     const [flag,setFlag] = useState(false);
 
@@ -32,7 +33,7 @@ export const Header = (props)=>{
                        {
                            
                            props.currentUser ?
-                            <Link className="option" onClick={()=>auth.signOut()} to="/">SIGN OUT</Link> :
+                            <Link className="option" onClick={()=>auth.signOut()} to="/signin">SIGN OUT</Link> :
                             <Link className="option" to="/signin">SIGN IN</Link> 
                        } 
                     <Carticon handleClick = {handleDropdown} />
@@ -43,5 +44,5 @@ export const Header = (props)=>{
                 }
                 
         </div>
-    )
+    )   
 }
